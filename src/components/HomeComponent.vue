@@ -1,4 +1,11 @@
-<script setup></script>
+<script setup>
+import LayoutComponent from '@/components/LayoutComponent.vue';
+import HeaderComponent from '@/components/HeaderComponent.vue';
+</script>
 <template>
-  <div>Home component</div>
+  <LayoutComponent>
+    <template #header>
+      <HeaderComponent />
+    </template>
+  </LayoutComponent>
 </template>

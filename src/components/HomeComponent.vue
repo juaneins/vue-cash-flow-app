@@ -2,10 +2,43 @@
 import { ref } from 'vue';
 import LayoutComponent from '@/components/LayoutComponent.vue';
 import HeaderComponent from '@/components/HeaderComponent.vue';
-import MovementsComponent from '@/components/MovementsComponent.vue';
+import MovementsComponent from '@/components/Movements/MovementsComponent.vue';
 import ResumeComponent from '@/components/Resume/ResumeComponent.vue';
 
 const amount = ref(null);
+
+const movements = ref([
+  {
+    id: 1,
+    title: 'Movimiento',
+    description: 'Deposito de salario',
+    amount: '1000',
+  },
+  {
+    id: 2,
+    title: 'Movimiento 1',
+    description: 'Deposito de honorarios',
+    amount: '500',
+  },
+  {
+    id: 3,
+    title: 'Movimiento 3',
+    description: 'Comida',
+    amount: '-100',
+  },
+  {
+    id: 4,
+    title: 'Movimiento 4',
+    description: 'Colegiatura',
+    amount: '1000',
+  },
+  {
+    id: 5,
+    title: 'Movimiento 5',
+    description: 'Reparación equipo',
+    amount: '1000',
+  },
+]);
 </script>
 <template>
   <LayoutComponent>
@@ -21,7 +54,7 @@ const amount = ref(null);
       </ResumeComponent>
     </template>
     <template #movements>
-      <MovementsComponent />
+      <MovementsComponent :movements="movements" />
     </template>
   </LayoutComponent>
 </template>

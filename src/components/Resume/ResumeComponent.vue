@@ -31,8 +31,7 @@ const currencyFormatter = new Intl.NumberFormat('es-EC', {
 });
 
 const amountCurrency = computed(() => {
-    console.log(amountVisual.value);
-  return currencyFormatter.format(amountVisual.value)
+  return currencyFormatter.format(amountVisual.value);
 });
 </script>
 <template>

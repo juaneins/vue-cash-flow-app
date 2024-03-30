@@ -1,8 +1,11 @@
 <script setup>
+import { ref } from 'vue';
 import LayoutComponent from '@/components/LayoutComponent.vue';
 import HeaderComponent from '@/components/HeaderComponent.vue';
 import MovementsComponent from '@/components/MovementsComponent.vue';
 import ResumeComponent from '@/components/Resume/ResumeComponent.vue';
+
+const amount = ref(null);
 </script>
 <template>
   <LayoutComponent>
@@ -10,7 +13,7 @@ import ResumeComponent from '@/components/Resume/ResumeComponent.vue';
       <HeaderComponent />
     </template>
     <template #resume>
-      <ResumeComponent />
+      <ResumeComponent :label="'Ahorro Total'" :total-amount="12500" :amount="amount" />
     </template>
     <template #movements>
       <MovementsComponent />

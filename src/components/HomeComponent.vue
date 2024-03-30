@@ -13,7 +13,12 @@ const amount = ref(null);
       <HeaderComponent />
     </template>
     <template #resume>
-      <ResumeComponent :label="'Ahorro Total'" :total-amount="12500" :amount="amount" />
+      <ResumeComponent :label="'Ahorro Total'" :total-amount="12500" :amount="amount">
+        <template #graphic>
+          <div>graphic</div>
+        </template>
+        <template #action> action </template>
+      </ResumeComponent>
     </template>
     <template #movements>
       <MovementsComponent />

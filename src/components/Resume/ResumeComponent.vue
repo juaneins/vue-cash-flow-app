@@ -1,7 +1,10 @@
 <script setup>
 import { computed, defineProps } from 'vue';
 
-const { label, totalAmount, amount } = defineProps({
+const { label, totalLabel, totalAmount, amount } = defineProps({
+  totalLabel: {
+    type: String,
+  },
   label: {
     type: String,
   },
@@ -17,11 +20,31 @@ const { label, totalAmount, amount } = defineProps({
 const amountVisual = computed(() => {
   return amount !== null ? amount : totalAmount;
 });
+
+const labelVisual = computed(() => {
+  return label === null ? totalLabel : label;
+});
+
+const currencyFormatter = new Intl.NumberFormat('es-EC', {
+  style: 'currency',
+  currency: 'USD',
+});
+
+const amountCurrency = computed(() => {
+    console.log(amountVisual.value);
+  return currencyFormatter.format(amountVisual.value)
+});
 </script>
 <template>
   <main>
-    <p>{{ label }}</p>
-    <h1>{{ amountVisual }}</h1>
+    <p>{{ labelVisual }}</p>
+    <h1>{{ amountCurrency }}</h1>
+    <div class="graphic">
+      <slot name="graphic"></slot>
+    </div>
+    <div class="action">
+      <slot name="action"></slot>
+    </div>
   </main>
 </template>
 <style scoped>

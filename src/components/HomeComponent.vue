@@ -4,6 +4,7 @@ import LayoutComponent from '@/components/LayoutComponent.vue';
 import HeaderComponent from '@/components/HeaderComponent.vue';
 import MovementsComponent from '@/components/Movements/MovementsComponent.vue';
 import ResumeComponent from '@/components/Resume/ResumeComponent.vue';
+import ActionComponent from '@/components/ActionComponent.vue';
 
 const amount = ref(null);
 
@@ -62,7 +63,9 @@ const movements = ref([
         <template #graphic>
           <div>graphic</div>
         </template>
-        <template #action> action </template>
+        <template #action>
+          <ActionComponent />
+        </template>
       </ResumeComponent>
     </template>
     <template #movements>

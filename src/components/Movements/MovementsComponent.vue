@@ -1,5 +1,5 @@
 <script setup>
-import { toRefs, defineProps } from 'vue';
+import { toRefs } from 'vue';
 import MovementComponent from '@/components/Movements/MovementComponent.vue';
 
 const props = defineProps({
@@ -10,12 +10,24 @@ const props = defineProps({
 });
 // toRefs(props) para que los props sean reactivos
 const { movements } = toRefs(props);
+
+const remove = (id) => {
+  console.log(id);
+};
 </script>
 <template>
   <div class="movements">
     <h2 class="title">Historial</h2>
     <div class="content">
-      <MovementComponent v-for="movement in movements" :key="movement.id" :title="movement.title" />
+      <MovementComponent
+        v-for="{ id, title, description, amount } in movements"
+        :key="id"
+        :id="id"
+        :title="title"
+        :description="description"
+        :amount="amount"
+        @remove="remove"
+      />
     </div>
   </div>
 </template>

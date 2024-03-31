@@ -52,6 +52,8 @@ const movements = ref([
     amount: -1420,
   },
 ]);
+
+const amounts = ref([100, 200, 500, 200, -400, -600, -300, 0, 300, 500]);
 </script>
 <template>
   <LayoutComponent>
@@ -61,7 +63,7 @@ const movements = ref([
     <template #resume>
       <ResumeComponent :label="'Ahorro Total'" :total-amount="12500" :amount="amount">
         <template #graphic>
-          <GraphicComponent />
+          <GraphicComponent :amounts="amounts" />
         </template>
         <template #action>
           <ActionComponent />

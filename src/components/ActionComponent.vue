@@ -2,11 +2,47 @@
 import { ref } from 'vue';
 import ModalComponent from '@/components/ModalComponent.vue';
 const showModal = ref(false);
+const title = ref('');
+const amount = ref(0);
+const description = ref('');
+const movementType = ref('Ingreso');
+
+const submit = () => {
+  showModal.value = !showModal.value;
+};
 </script>
 <template>
   <button @click="showModal = true">Agregar movimiento</button>
   <teleport to="#app">
-    <ModalComponent v-show="showModal" @close="showModal = false">Aqui Formulario</ModalComponent>
+    <ModalComponent v-show="showModal" @close="showModal = false">
+      <form @submit.prevent="submit">
+        <div class="field">
+          <label for="title">Título</label>
+          <input id="title" type="text" v-model="title" />
+        </div>
+        <div class="field">
+          <label for="amount">Monto</label>
+          <input id="amount" type="number" v-model="amount" />
+        </div>
+        <div class="field">
+          <label for="description">Descripción</label>
+          <textarea id="description" rows="4" type="text" v-model="description" />
+        </div>
+        <div class="field">
+          <label for="incomeRadio" class="radio-label">
+            <input id="incomeRadio" type="radio" v-model="movementType" value="Ingreso" />
+            <span>Ingreso</span>
+          </label>
+          <label for="outcomeRadio" class="radio-label">
+            <input id="outcomeRadio" type="radio" v-model="movementType" value="Gasto" />
+            <span>Gasto</span>
+          </label>
+        </div>
+        <div class="action">
+          <button>Agregar movimiento</button>
+        </div>
+      </form>
+    </ModalComponent>
   </teleport>
 </template>
 <style scoped>

@@ -5,7 +5,7 @@ import HeaderComponent from '@/components/HeaderComponent.vue';
 import MovementsComponent from '@/components/Movements/MovementsComponent.vue';
 import ResumeComponent from '@/components/Resume/ResumeComponent.vue';
 import ActionComponent from '@/components/ActionComponent.vue';
-
+import GraphicComponent from '@/components/Resume/GraphicComponent.vue';
 const amount = ref(null);
 
 const movements = ref([
@@ -61,7 +61,7 @@ const movements = ref([
     <template #resume>
       <ResumeComponent :label="'Ahorro Total'" :total-amount="12500" :amount="amount">
         <template #graphic>
-          <div>graphic</div>
+          <GraphicComponent />
         </template>
         <template #action>
           <ActionComponent />

@@ -1,47 +1,37 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import SplashScreenComponent from '@/components/SplashScreenComponent.vue';
+import { defineAsyncComponent } from 'vue';
+
+const HomeAsyncComponent = defineAsyncComponent(() => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(import('@/components/HomeComponent.vue'));
+    }, 2500);
+  });
+});
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <Suspense>
+    <template #default>
+      <HomeAsyncComponent />
+    </template>
+    <template #fallback>
+      <SplashScreenComponent />
+    </template>
+  </Suspense>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
+<style>
+html,
+body,
+.app {
+  min-height: 100vh;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+* {
+  --brand-green: #04b500;
+  --brand-blue: #0689b0;
 }
 </style>

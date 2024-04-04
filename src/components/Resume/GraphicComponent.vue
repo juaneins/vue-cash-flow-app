@@ -34,6 +34,7 @@ const points = computed(() => {
 
 const showPointer = ref(false);
 const pointer = ref(0);
+
 const tap = ({ target, touches }) => {
   showPointer.value = true;
   const elementWidth = target.getBoundingClientRect().width;

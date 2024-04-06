@@ -29,7 +29,7 @@ const points = computed(() => {
     const x = (300 / total) * (i + 1);
     const y = amountToPixels(amount);
     return `${points} ${x},${y}`;
-  }, '0,100');
+  }, '0, 100');
 });
 
 const showPointer = ref(false);

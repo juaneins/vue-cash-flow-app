@@ -76,6 +76,16 @@ const amounts = computed(() => {
     }, 0);
   });
 });
+
+const create = (movement) => {
+  movements.value.push(movement);
+};
+
+const remove = (id) => {
+  const index = movements.value.findIndex((m) => m.id === id);
+  movements.value.splice(index, 1);
+  console.log(movements);
+};
 </script>
 <template>
   <LayoutComponent>
@@ -88,12 +98,12 @@ const amounts = computed(() => {
           <GraphicComponent :amounts="amounts" />
         </template>
         <template #action>
-          <ActionComponent />
+          <ActionComponent @create="create" />
         </template>
       </ResumeComponent>
     </template>
     <template #movements>
-      <MovementsComponent :movements="movements" />
+      <MovementsComponent :movements="movements" @remove="remove" />
     </template>
   </LayoutComponent>
 </template>

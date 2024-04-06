@@ -7,7 +7,15 @@ const amount = ref(0);
 const description = ref('');
 const movementType = ref('Ingreso');
 
+const emit = defineEmits(['create']);
+
 const submit = () => {
+  emit('create', {
+    id: new Date().getMilliseconds(),
+    title: title.value,
+    description: description.value,
+    amount: movementType.value === 'Ingreso' ? amount.value : -amount.value,
+  });
   showModal.value = !showModal.value;
 };
 </script>

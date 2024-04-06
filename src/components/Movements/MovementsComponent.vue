@@ -10,9 +10,10 @@ const props = defineProps({
 });
 // toRefs(props) para que los props sean reactivos
 const { movements } = toRefs(props);
+const emit = defineEmits(['remove']);
 
 const remove = (id) => {
-  console.log(id);
+  emit('remove', id);
 };
 </script>
 <template>
